@@ -1,7 +1,3 @@
-import sys
-sys.path.append(".")
-sys.path.append("..")
-
 from openprompt.data_utils import InputExample
 from openprompt.data_utils.ZH import NLPCC14_SC
 from openprompt.data_utils.data_sampler import FewShotSampler
