@@ -24,7 +24,7 @@ class NLPCC14_SC(CLSProcessor):
                         "context": text,
                         "options": self.labels_mapped,
                     },
-                    tgt_text = self.get_label(label),
+                    label = self.get_label(label),
                 )
                 examples.append(example)
         return examples
@@ -124,6 +124,8 @@ class ECISA(CLSProcessor):
         if split == 'dev': return []
         path = os.path.join(data_dir, f"{split}.json")
         
+        examples = []
+        
         with open(path, encoding='utf8') as f:
             for example_json in json.load(f):
                 sents = example_json["Sentence"]
@@ -181,6 +183,7 @@ class JD_FULL(CLSProcessor):
         if split == 'dev': return []
         path = os.path.join(data_dir, f"{split}.jsonl")
         
+        examples = []
         with open(path, encoding='utf8') as f:
             for line in f:
                 example_json = json.loads(line)
