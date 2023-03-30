@@ -99,13 +99,13 @@ class DataProcessor:
         """
         return self.get_examples(data_dir, "train")
 
-    def get_dev_examples(self, data_dir: Optional[str] = None) -> List[InputExample]:
+    def get_valid_examples(self, data_dir: Optional[str] = None) -> List[InputExample]:
         """
-        get dev examples from the development file under :obj:`data_dir`
+        get valid examples from the development file under :obj:`data_dir`
 
-        call ``get_examples(data_dir, "dev")``, see :py:meth:`~openprompt.data_utils.data_processor.DataProcessor.get_examples`
+        call ``get_examples(data_dir, "valid")``, see :py:meth:`~openprompt.data_utils.data_processor.DataProcessor.get_examples`
         """
-        return self.get_examples(data_dir, "dev")
+        return self.get_examples(data_dir, "valid")
 
     def get_test_examples(self, data_dir: Optional[str] = None) -> List[InputExample]:
         """
@@ -133,7 +133,7 @@ class DataProcessor:
 
         Args:
             data_dir (str): the base path of the dataset
-            split (str): ``train`` / ``dev`` / ``test`` / ``unlabeled``
+            split (str): ``train`` / ``valid`` / ``test`` / ``unlabeled``
 
         Returns:
             List[InputExample]: return a list of :py:class:`~openprompt.data_utils.data_utils.InputExample`

@@ -1,5 +1,58 @@
 from .processor import *
 
+class NLPCC14_SC(CLSProcessor):
+    def __init__(self):
+        super().__init__(
+            labels_origin = [
+                "0", "1",
+            ],
+            labels_mapped = [
+                "消极", "积极",
+            ]
+        )
+
+    def get_examples(self, data_dir, split):
+        path = os.path.join(data_dir, f"{split}.tsv")
+        
+        examples = []
+        with open(path, encoding='utf8') as f:
+            for i, line in enumerate(f):
+                if i == 0: continue
+                label, text = line.strip().split("\t")
+                example = InputExample(
+                    meta = {
+                        "context": text,
+                        "options": self.labels_mapped,
+                    },
+                    tgt_text = self.get_label(label),
+                )
+                examples.append(example)
+        return examples
+
+    def get_test_examples(self, data_dir) -> List[InputExample]:
+        path = os.path.join(data_dir, f"test.tsv")
+        
+        examples = []
+        with open(path, encoding='utf8') as f:
+            for i, line in enumerate(f):
+                if i == 0: continue
+                text_id, text = line.strip().split("\t")
+                example = InputExample(
+                    meta = {
+                        "context": text,
+                        "options": self.labels_mapped,
+                    },
+                )
+                examples.append(example)
+        return examples
+                
+        
+
+    def get_templates(self):
+        return [
+            '文本：{context} 问题:上述文本所表达的情感为？{options}',
+        ]
+
 class ChnSentiCorp(CLSProcessor):
     """
     @inproceedings{st2008ChnSentiCorp,
