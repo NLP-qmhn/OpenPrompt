@@ -135,13 +135,13 @@ prompt_model = prompt_model.eval()
 
 allpreds = []
 with torch.no_grad():
-    for inputs in enumerate(test_dataloader):
+    for inputs in test_dataloader:
         if use_cuda:
             inputs = inputs.cuda()
         logits = prompt_model(inputs)
         allpreds.extend(torch.argmax(logits, dim=-1).cpu().tolist())
 
 with open("NLPCC14-SC.tsv", "w+") as f:
-    f.write("index\tprediction")
+    f.write("index\tprediction\n")
     for i, pred in enumerate(allpreds):
-        f.write("{i}\t{pred}".format(i=i, pred=pred))
+        f.write("{i}\t{pred}\n".format(i=i, pred=pred))
