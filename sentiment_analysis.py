@@ -88,7 +88,7 @@ optimizer_grouped_parameters2 = [
     {'params': [p for n,p in prompt_model.template.named_parameters()]}
 ]
 
-optimizer1 = AdamW(optimizer_grouped_parameters1, lr=0)
+optimizer1 = AdamW(optimizer_grouped_parameters1, lr=3e-6)
 optimizer2 = AdamW(optimizer_grouped_parameters2, lr=5e-1/1024)
 
 for epoch in range(3):
@@ -129,6 +129,7 @@ for epoch in range(3):
 
     acc = sum([int(i==j) for i,j in zip(allpreds, alllabels)])/len(allpreds)
     print("accuracy:", acc)
+    torch.save(prompt_model.state_dict(), 'model_epoch_{}_acc_{}'.format(epoch, acc))
 
 # prediction
 prompt_model = prompt_model.eval()
