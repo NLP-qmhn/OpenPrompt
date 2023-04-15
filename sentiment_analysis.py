@@ -10,11 +10,11 @@ testset = processor.get_test_examples("datasets/NLPCC14-SC/split_data")
 # sampler  = FewShotSampler(num_examples_per_label=8, num_examples_per_label_dev=8, also_sample_dev=True)
 # trainset, devset = sampler(trainset, devset)
 
-from transformers import BertTokenizer, AlbertForMaskedLM
+from transformers import BertTokenizer, AutoModelForMaskedLM
 from openprompt.plms.mlm import MLMTokenizerWrapper
 # You can use any Chinese MLM model here, such as BERT, RoBERTa, etc.
-tokenizer = BertTokenizer.from_pretrained("uer/albert-base-chinese-cluecorpussmall")
-plm = AlbertForMaskedLM.from_pretrained("uer/albert-base-chinese-cluecorpussmall")
+tokenizer = BertTokenizer.from_pretrained("bert-base-chinese")
+plm = AutoModelForMaskedLM.from_pretrained("bert-base-chinese")
 WrapperClass = MLMTokenizerWrapper
 
 from openprompt.prompts import SoftTemplate, MixedTemplate
