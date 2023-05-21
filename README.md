@@ -27,6 +27,9 @@
 
 ## What's New?
 
+ 
+
+- ❗️ April 2023: $\color{red}{\normalsize{\textbf{Want to build your Chat AI?}}}$ **We are releasing [UltraChat](https://github.com/thunlp/UltraChat), use OpenPrompt and UltraChat to conduct supervised instruction tuning, see** [`./tutorial/9_UltraChat.py`](./tutorial/9_UltraChat.py).
 - Aug 2022: Thanks to contributor [zhiyongLiu1114](https://github.com/zhiyongLiu1114), OpenPrompt now supports [ERNIE 1.0](https://github.com/thunlp/OpenPrompt/tree/main/tutorial/7_ernie_paddlepaddle) in PaddlePaddle.
 - July 2022: OpenPrompt supports OPT now.
 - June 2022: OpenPrompt wins ACL 2022 Best Demo Paper Award.
@@ -117,7 +120,7 @@ With the modularity and flexibility of OpenPrompt, you can easily develop a prom
 
 #### Step 1: Define a task
 
-The first step is to determine the current NLP task, think about what’s your data looks like and what do you want from the data! That is, the essence of this step is to determine the `classses` and the `InputExample` of the task. For simplicity, we use Sentiment Analysis as an example. tutorial_task.
+The first step is to determine the current NLP task, think about what’s your data looks like and what do you want from the data! That is, the essence of this step is to determine the `classes` and the `InputExample` of the task. For simplicity, we use Sentiment Analysis as an example. tutorial_task.
 
 ```python
 from openprompt.data_utils import InputExample
@@ -264,6 +267,6 @@ Please cite our paper if you use OpenPrompt in your work
   <img src="https://contrib.rocks/image?repo=thunlp/OpenPrompt" />
 </a>
 
-We thank all the  contributors to this project, more contributors are welcome!
+We thank all the contributors to this project, more contributors are welcome!
 
 
